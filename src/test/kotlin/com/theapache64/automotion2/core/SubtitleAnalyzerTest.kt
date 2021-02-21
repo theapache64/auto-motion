@@ -1,6 +1,5 @@
 package com.theapache64.automotion2.core
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.winterbe.expekt.should
 import org.junit.Test

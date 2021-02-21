@@ -1,7 +1,6 @@
 package com.theapache64.automotion2.utils
 
 import com.winterbe.expekt.should
-import org.junit.Assert.*
 import org.junit.Test
 
 class VersionUtilsTest {
