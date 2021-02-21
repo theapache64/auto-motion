@@ -51,7 +51,7 @@ wget "https://raw.githubusercontent.com/theapache64/auto-motion2/master/install.
 <summary><b>Complete Usage</b></summary> <br/>
 
 ```
-usage: auto-motion -v input.mp4 [-H] -V <arg> [-BGM <arg>] [-ST <arg>]
+usage: auto-motion2 -v input.mp4 [-H] -V <arg> [-BGM <arg>] [-ST <arg>]
        [-VL <arg>] [-MTL <arg>] [-TLS <arg>] [-ID <arg>] [-CR <arg>] [-WM
        <arg>] [-IT <arg>] [-CT <arg>] [-IST <arg>] [-CST <arg>] [-F <arg>]
        [-HL <arg>] [-WMC <arg>] [-WMS <arg>] [-WMBG <arg>] [-WMBGO <arg>]
