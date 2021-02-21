@@ -1,7 +1,7 @@
-import com.theapache64.automotion.core.*
-import com.theapache64.automotion.utils.ComplexCommandExecutor
-import com.theapache64.automotion.utils.DateTimeUtils
-import com.theapache64.automotion.utils.InputUtils
+import com.theapache64.automotion2.core.*
+import com.theapache64.automotion2.utils.ComplexCommandExecutor
+import com.theapache64.automotion2.utils.DateTimeUtils
+import com.theapache64.automotion2.utils.InputUtils
 import java.io.File
 import java.lang.Exception
 import kotlin.system.exitProcess
