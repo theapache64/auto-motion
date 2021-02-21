@@ -10,13 +10,13 @@
 
 > A CLI to automate your video editing process
 
-### ✨ Demo
+## ⛰️ Story
 
-![](demo.gif)
+- [Read](https://dev.to/teamxenox/automotion-how-i-automated-my-video-editing-process-1i6c) how I automated my video editing process (includes a demo at the end)
 
 ## 🦿 Prerequisites
 
-- Java 8 or above
+- JRE
 - ffmpeg
 
 ## 🛠 Installation
@@ -24,7 +24,7 @@
 <details open="open">
 <summary><b>Automatic Installation</b></summary> <br/>
 
-Copy paste below line into your terminal.
+Copy and paste below line into your terminal.
 
 ```shell script
 wget "https://raw.githubusercontent.com/theapache64/auto-motion2/master/install.sh" -q --show-progress -O install.sh && sh install.sh && source ~/.bashrc
@@ -180,7 +180,7 @@ Give a ⭐️ if this project helped you!
 
 ## ☑️ TODO
 
-- [ ] Task 1
+- [ ] Release initial version of auto-motion2
 
 ## 📝 License
 
