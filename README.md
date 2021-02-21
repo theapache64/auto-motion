@@ -9,6 +9,8 @@
 <img alt="Twitter: theapache64" src="https://img.shields.io/twitter/follow/theapache64.svg?style=social" />
 </a>
 
+Under active development ⚠️
+
 > A CLI to automate your video editing process
 
 ## ⛰️ Story
