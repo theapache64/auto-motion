@@ -65,8 +65,7 @@ v1.0.0-alpha01
                                         one)
  -BGM,--background-music <arg>          Background music for timelapse.
                                         Default
-                                        '/home/theapache64/Documents/proje
-                                        cts/auto-motion/lab/lost_in_time.m
+                                        'lab/lost_in_time.m
                                         p3'
  -ST,--sub-title <arg>                  Intro sub title
  -VL,--video-lang <arg>                 Video language. Default 'en'
@@ -90,8 +89,7 @@ v1.0.0-alpha01
  -CST,--credits-sub-title <arg>         Credits sub title. Default
                                         (theapache64) (active username)
  -F,--font <arg>                        Font file path. Default
-                                        '/home/theapache64/Documents/proje
-                                        cts/auto-motion/lab/komikax.ttf'
+                                        'lab/komikax.ttf'
  -HL,--highlight <arg>                  Highlight of the video. Format
                                         'HH:mm:ss-ss' (from- to seconds).
                                         Eg:
