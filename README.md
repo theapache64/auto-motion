@@ -2,9 +2,9 @@
 
 # auto-motion
 
-[comment]: <> (![buildStatus]&#40;https://img.shields.io/github/workflow/status/theapache64/auto-motion2/Java%20CI%20with%20Gradle?style=plastic&#41;)
+[comment]: <> (![buildStatus]&#40;https://img.shields.io/github/workflow/status/theapache64/auto-motion/Java%20CI%20with%20Gradle?style=plastic&#41;)
 
-[comment]: <> (![latestVersion]&#40;https://img.shields.io/github/v/release/theapache64/auto-motion2&#41;)
+[comment]: <> (![latestVersion]&#40;https://img.shields.io/github/v/release/theapache64/auto-motion&#41;)
 <a href="https://twitter.com/theapache64" target="_blank">
 <img alt="Twitter: theapache64" src="https://img.shields.io/twitter/follow/theapache64.svg?style=social" />
 </a>
@@ -30,7 +30,7 @@ Under active development ⚠️
 Copy and paste below line into your terminal.
 
 ```shell script
-wget "https://raw.githubusercontent.com/theapache64/auto-motion2/master/install.sh" -q --show-progress -O install.sh && sh install.sh && source ~/.bashrc
+wget "https://raw.githubusercontent.com/theapache64/auto-motion/master/install.sh" -q --show-progress -O install.sh && sh install.sh && source ~/.bashrc
 ```
 
 </details>
@@ -39,22 +39,22 @@ wget "https://raw.githubusercontent.com/theapache64/auto-motion2/master/install.
 <summary><b>Manual Installation</b></summary> <br/>
 
 1. Download latest `jar`
-   from [releases](https://github.com/theapache64/auto-motion2/releases/latest/download/auto-motion2.main.jar)
-1. Run `java -jar auto-motion2.main.jar`
+   from [releases](https://github.com/theapache64/auto-motion/releases/latest/download/auto-motion.main.jar)
+1. Run `java -jar auto-motion.main.jar`
 
 </details>
 
 ## ⌨️ Usage
 
 ```shell script
-~$ auto-motion2
+~$ auto-motion
 ```
 
 <details>
 <summary><b>Complete Usage</b></summary> <br/>
 
 ```
-usage: auto-motion2 -v input.mp4 [-H] -V <arg> [-BGM <arg>] [-ST <arg>]
+usage: auto-motion -v input.mp4 [-H] -V <arg> [-BGM <arg>] [-ST <arg>]
        [-VL <arg>] [-MTL <arg>] [-TLS <arg>] [-ID <arg>] [-CR <arg>] [-WM
        <arg>] [-IT <arg>] [-CT <arg>] [-IST <arg>] [-CST <arg>] [-F <arg>]
        [-HL <arg>] [-WMC <arg>] [-WMS <arg>] [-WMBG <arg>] [-WMBGO <arg>]
@@ -181,7 +181,7 @@ Give a ⭐️ if this project helped you!
 
 ## ☑️ TODO
 
-- [ ] Release initial version of auto-motion2
+- [ ] Release initial version of auto-motion
 
 ## 📝 License
 
