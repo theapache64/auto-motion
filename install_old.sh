@@ -1,4 +1,4 @@
-LATEST_VERSION="v1.0.0-alpha01"
+LATEST_VERSION="v1.0.0-beta01"
 
 echo "⚙️ Installing..." &&
 sudo pip install ffpb &&

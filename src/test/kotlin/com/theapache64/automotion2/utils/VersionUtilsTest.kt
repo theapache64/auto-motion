@@ -6,6 +6,6 @@ import org.junit.Test
 class VersionUtilsTest {
     @Test
     fun testVersionSuccess() {
-        VersionUtils.getVersion().should.equal("v1.0.0-alpha01")
+        VersionUtils.getVersion().should.equal("v1.0.0-beta01")
     }
 }

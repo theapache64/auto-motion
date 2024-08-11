@@ -1,4 +1,4 @@
-LATEST_VERSION="v1.0.0-alpha01"
+LATEST_VERSION="v1.0.0-beta01"
 
 echo "⚙️ Updating..." &&
 wget "https://github.com/teamxenox/auto-motion/releases/download/$LATEST_VERSION/auto-motion-$LATEST_VERSION.zip"  -q --show-progress -O "auto-motion-$LATEST_VERSION.zip" &&

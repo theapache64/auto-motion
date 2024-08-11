@@ -61,7 +61,7 @@ usage: auto-motion -v input.mp4 [-H] -V <arg> [-BGM <arg>] [-ST <arg>]
        [-TFS <arg>] [-STFS <arg>] [-TC <arg>] [-STC <arg>] [-BG <arg>]
        [-RSRT <arg>] [-DSRT] [-RFMPG] [-sf] [-KS]
 A tool to edit your lengthy screen records, automatically. Version :
-v1.0.0-alpha01
+v1.0.0-beta01
  -H,--help                              To print help text
  -V,--video <arg>                       Video inputs (required at least
                                         one)
