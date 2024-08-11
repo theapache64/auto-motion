@@ -1,7 +1,7 @@
-package com.theapache64.automotion2.core
+package com.theapache64.automotion.core
 
 
-import com.theapache64.automotion2.core.srtparser.SrtParser
+import com.theapache64.automotion.core.srtparser.SrtParser
 import com.winterbe.expekt.should
 import org.junit.Test
 import java.io.File

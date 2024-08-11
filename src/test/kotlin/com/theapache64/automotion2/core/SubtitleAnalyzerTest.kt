@@ -1,4 +1,4 @@
-package com.theapache64.automotion2.core
+package com.theapache64.automotion.core
 
 import com.google.gson.GsonBuilder
 import com.winterbe.expekt.should

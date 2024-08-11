@@ -1,4 +1,4 @@
-package com.theapache64.automotion2.utils
+package com.theapache64.automotion.utils
 
 import com.winterbe.expekt.should
 import org.junit.Test

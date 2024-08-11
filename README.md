@@ -1,6 +1,6 @@
 ![](cover.jpeg)
 
-# auto-motion2
+# auto-motion
 
 [comment]: <> (![buildStatus]&#40;https://img.shields.io/github/workflow/status/theapache64/auto-motion2/Java%20CI%20with%20Gradle?style=plastic&#41;)
 

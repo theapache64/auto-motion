@@ -1,4 +1,4 @@
-package com.theapache64.automotion2.core
+package com.theapache64.automotion.core
 
 class CommandCookTest {
 
