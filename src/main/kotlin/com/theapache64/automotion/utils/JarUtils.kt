@@ -1,6 +1,5 @@
 package com.theapache64.automotion.utils
 
-import Main
 import java.io.File
 
 object JarUtils {
@@ -8,7 +7,7 @@ object JarUtils {
     fun getJarDir(): String {
 
         val jarDir = File(
-            Main::class.java.protectionDomain.codeSource.location
+            JarUtils::class.java.protectionDomain.codeSource.location
                 .toURI()
         ).parent
 

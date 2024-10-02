@@ -2,10 +2,13 @@ package com.theapache64.automotion.core
 
 import com.theapache64.automotion.utils.DateTimeUtils
 import com.theapache64.automotion.utils.JarUtils
-import com.theapache64.automotion.utils.VersionUtils
-import org.apache.commons.cli.*
+import org.apache.commons.cli.DefaultParser
+import org.apache.commons.cli.HelpFormatter
+import org.apache.commons.cli.Option
+import org.apache.commons.cli.Options
 import java.io.File
 import java.io.FileNotFoundException
+import java.nio.file.Files
 import java.util.*
 
 /**
@@ -86,7 +89,8 @@ class CommandParser(
         const val DEFAULT_MIN_TIMELAPSE_SRC_LENGTH = DEFAULT_MIN_TIMESTAMP_LENGTH / DEFAULT_TIMELAPSE_SPEED
         const val DEFAULT_INTRO_DURATION = 3.0
         private const val DEFAULT_CREDITS_DURATION = 2
-        private val DEFAULT_FONT = "${JarUtils.getJarDir()}lab/komikax.ttf"
+        private const val DEFAULT_FONT_NAME = "komikax.ttf"
+        private val DEFAULT_FONT_PATH = "${JarUtils.getJarDir()}$DEFAULT_FONT_NAME"
         private const val DEFAULT_WATERMARK_COLOR = "white"
         private const val DEFAULT_WATERMARK_FONT_SIZE = 24
         private const val DEFAULT_WATERMARK_BG_COLOR = "black"
@@ -102,7 +106,8 @@ class CommandParser(
         private const val DEFAULT_CREDITS_TITLE = "Thank You!"
         private val DEFAULT_CREDITS_SUB_TITLE = currentUserName
         private val DEFAULT_INTRO_SUB_TITLE = DateTimeUtils.getDateFormatted(Date())
-        private val DEFAULT_BGM = "${JarUtils.getJarDir()}lab/lost_in_time.mp3"
+        private const val DEFAULT_BGM_NAME = "lofi.mp3"
+        private val DEFAULT_BGM_PATH = "${JarUtils.getJarDir()}$DEFAULT_BGM_NAME"
 
 
         private val options: Options = Options()
@@ -112,7 +117,7 @@ class CommandParser(
                 OPT_BGM,
                 OPT_BGM_LONG,
                 true,
-                "Background music for timelapse. Default '${DEFAULT_BGM}'"
+                "Background music for timelapse. Default '${DEFAULT_BGM_PATH}'"
             )
             .addOption(OPT_SUB_TITLE, OPT_SUB_TITLE_LONG, true, "Intro sub title")
             .addOption(
@@ -189,7 +194,7 @@ class CommandParser(
                 OPT_FONT,
                 OPT_FONT_LONG,
                 true,
-                "Font file path. Default '${DEFAULT_FONT}'"
+                "Font file path. Default '${DEFAULT_FONT_NAME}'"
             )
             .addOption(
                 OPT_HIGHLIGHT,
@@ -298,7 +303,7 @@ class CommandParser(
             }
             .printHelp(
                 "auto-motion -v input.mp4",
-                "A tool to edit your lengthy screen records, automatically. Version : ${VersionUtils.getVersion()}",
+                "A tool to edit your lengthy screen records, automatically. Version : 0.0.2",
                 options,
                 "\uD83C\uDF8A Happy automate!",
                 true
@@ -319,12 +324,29 @@ class CommandParser(
         }
     }
 
+    /*    fun String.readAsResource(): Fi {
+            val classloader = Thread.currentThread().contextClassLoader
+            return classloader.getResourceAsStream(this)?.reader()?.readText() ?: error("Resource not found : $this")
+        }*/
+
     fun getBgms(): List<File> {
         val fileList = mutableListOf<File>()
         val bgms = if (cli.hasOption(OPT_BGM)) {
             cli.getOptionValues(OPT_BGM)
         } else {
-            arrayOf(DEFAULT_BGM)
+            val defaultBgmFile = File(DEFAULT_BGM_PATH)
+            if (!defaultBgmFile.exists()) {
+                println("🙏 Copying default BGM...")
+                val classLoader = Thread.currentThread().contextClassLoader
+                val defaultBgmStream = classLoader.getResourceAsStream(DEFAULT_BGM_NAME)
+                    ?: error("Default BGM stream is null")
+                Files.copy(defaultBgmStream, defaultBgmFile.toPath())
+            }
+
+            if (!defaultBgmFile.exists() || defaultBgmFile.length() == 0L) {
+                error("Failed to copy default BGM from resource")
+            }
+            arrayOf(DEFAULT_BGM_PATH)
         }
 
         bgms.forEach { bgm ->
@@ -406,9 +428,22 @@ class CommandParser(
     fun getFontFile(): File {
         val fontPath = cli.getOptionValue(
             OPT_FONT,
-            DEFAULT_FONT
+            DEFAULT_FONT_PATH
         )
-        return File(fontPath)
+        return File(fontPath).also {
+            val defaultFontFile = File(DEFAULT_FONT_PATH)
+            if (!defaultFontFile.exists()) {
+                println("🙏 Copying default font...")
+                val classLoader = Thread.currentThread().contextClassLoader
+                val defaultFontStream = classLoader.getResourceAsStream(DEFAULT_FONT_NAME)
+                    ?: error("Default font stream is null")
+                Files.copy(defaultFontStream, defaultFontFile.toPath())
+            }
+
+            if (!defaultFontFile.exists() || defaultFontFile.length() == 0L) {
+                error("Failed to copy default font from resource")
+            }
+        }
     }
 
     fun getHighlightSection(): Pair<Double, Double>? {
