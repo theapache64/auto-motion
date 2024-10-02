@@ -21,7 +21,11 @@ Under active development ⚠️
 
 - JRE
 - ffmpeg
+- ffprob
+- ffpb
+- autosub
 
+<!--
 ## 🛠 Installation
 
 <details open="open">
@@ -43,6 +47,7 @@ wget "https://raw.githubusercontent.com/theapache64/auto-motion/master/install.s
 1. Run `java -jar auto-motion.main.jar`
 
 </details>
+-->
 
 ## ⌨️ Usage
 
