@@ -9,13 +9,12 @@ class VideoMergerTest {
     @Test
     fun testMergeVideoSuccess() {
 
-        val lionVideo = File("lab/lion_big.mp4")
-        val sharkVideo = File("lab/shark.mp4")
-        val inputVideoDuration = FileUtils.getDuration(lionVideo) + FileUtils.getDuration(sharkVideo)
+        val lionVideo = File("lab/lion.mp4")
+        val inputVideoDuration = FileUtils.getDuration(lionVideo) + FileUtils.getDuration(lionVideo)
 
         val inputVideos = listOf(
             lionVideo,
-            sharkVideo
+            lionVideo
         )
 
         val outputVideo = VideoMerger.mergeVideo(inputVideos)
@@ -28,7 +27,7 @@ class VideoMergerTest {
     fun testMergeVideoDiffFormatFailure() {
 
         val lionVideo = File("lab/lion.mp4")
-        val sharkVideo = File("lab/shark.mp4")
+        val sharkVideo = File("lab/comma.mp4")
         val inputVideoDuration = FileUtils.getDuration(lionVideo) + FileUtils.getDuration(sharkVideo)
 
         val inputVideos = listOf(

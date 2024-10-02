@@ -18,7 +18,6 @@ class AudioMerger(private val bgmFiles: List<File>) {
         }
 
         val command = buildCommand(outputFile)
-        println("QuickTag: AudioMerger:merge: $command")
         ComplexCommandExecutor.executeCommand(
             command,
             isLivePrint = true,

@@ -31,12 +31,12 @@ class FileUtilsTest {
 
     @Test
     fun getDimensionMovieSuccess() {
-        FileUtils.getDimension(File("lab/movie.mkv")).toString().should.equal("VideoMeta(duration=0.0, height=544, sampleAspectRatio=68:67, width=1280)")
+        FileUtils.getDimension(File("lab/comma.mp4")).toString().should.equal("VideoMeta(duration=363.235649, height=360, sampleAspectRatio=1:1, width=640)")
     }
 
     @Test
     fun testHasSubTitleSuccess() {
-        val movieFile = File("lab/movie.mkv")
+        val movieFile = File("lab/lion_srted.mp4")
         FileUtils.hasSubTitle(movieFile).should.`true`
     }
 
@@ -49,8 +49,8 @@ class FileUtilsTest {
 
     @Test
     fun testParseSubTitleSuccess() {
-        val movieFile = File("lab/movie.mkv")
+        val movieFile = File("lab/lion_srted.mp4")
         val subTitleFile = FileUtils.parseSubTitle(movieFile)
-        subTitleFile!!.name.should.equal("movie.srt")
+        subTitleFile!!.name.should.equal("lion_srted.srt")
     }
 }

@@ -30,17 +30,17 @@ class BgmProviderTest {
 
 
         val bgm2 = bgmProvider.getBgm(25.0)
-        bgm2.interval.first.should.equal(11.0)
-        bgm2.interval.second.should.equal(36.0)
+        bgm2.interval.first.should.equal(10.0)
+        bgm2.interval.second.should.equal(35.0)
 
 
         val bgm3 = bgmProvider.getBgm(60.0)
-        bgm3.interval.first.should.equal(37.0)
-        bgm3.interval.second.should.equal(97.0)
+        bgm3.interval.first.should.equal(35.0)
+        bgm3.interval.second.should.equal(95.0)
 
         val bgm4 = bgmProvider.getBgm(10.5)
-        bgm4.interval.first.should.equal(98.0)
-        bgm4.interval.second.should.equal(108.5)
+        bgm4.interval.first.should.equal(95.0)
+        bgm4.interval.second.should.equal(105.5)
 
         try {
             bgmProvider.getBgm(100000000000.0)
@@ -81,18 +81,18 @@ class BgmProviderTest {
 
 
         val bgm2 = bgmProvider.getBgm(25.0)
-        bgm2.interval.first.should.equal(11.0)
-        bgm2.interval.second.should.equal(36.0)
+        bgm2.interval.first.should.equal(10.0)
+        bgm2.interval.second.should.equal(35.0)
 
 
         val bgm3 = bgmProvider.getBgm(60.0)
-        bgm3.interval.first.should.equal(37.0)
-        bgm3.interval.second.should.equal(97.0)
+        bgm3.interval.first.should.equal(35.0)
+        bgm3.interval.second.should.equal(95.0)
 
 
         val bgm4 = bgmProvider.getBgm(10.5)
-        bgm4.interval.first.should.equal(98.0)
-        bgm4.interval.second.should.equal(108.5)
+        bgm4.interval.first.should.equal(95.0)
+        bgm4.interval.second.should.equal(105.5)
 
         try {
             bgmProvider.getBgm(100000000000.0)

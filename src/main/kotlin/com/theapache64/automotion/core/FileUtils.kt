@@ -47,8 +47,7 @@ object FileUtils {
         val command =
             "ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration,sample_aspect_ratio -print_format json=c=1 \"${videoFile.absolutePath}\""
 
-        val jsonString =
-            SimpleCommandExecutor.executeCommand(command)
+        val jsonString = SimpleCommandExecutor.executeCommand(command)
         val ffProbeOutput = GsonUtils.gson.fromJson(jsonString, FFProbeOutput::class.java)
         return ffProbeOutput.streams.first()
     }

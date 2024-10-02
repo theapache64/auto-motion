@@ -3,7 +3,6 @@ package com.theapache64.automotion.core
 import com.theapache64.automotion.models.SubtitleReport
 import com.theapache64.automotion.models.Timelapse
 import java.io.File
-import java.lang.StringBuilder
 
 /**
  * To build ffmpeg final command
@@ -205,9 +204,11 @@ class CommandCook(
               drawtext=fontfile='${fontFile.absolutePath}':fontsize=$titleFontSize:fontcolor=$titleColor:x=(w-text_w)/2:y=(h-text_h-text_h)/2:text='$creditsTitle', 
               drawtext=fontfile='${fontFile.absolutePath}':fontsize=$subTitleFontSize:fontcolor=$subTitleColor:x=(w-text_w)/2:y=(h+text_h)/2:text='$creditsSubTitle' 
             [${CREDITS_VIDEO_LABEL}];
-            [1:a]atrim=${creditsBgm.first}:${creditsBgm.second},asetpts=PTS-STARTPTS,afade=t=in:d=1,afade=t=out:st=${getAudioFadeOut(
-                creditsDuration
-            )},asetpts=PTS-STARTPTS[${CREDITS_AUDIO_LABEL}]; 
+            [1:a]atrim=${creditsBgm.first}:${creditsBgm.second},asetpts=PTS-STARTPTS,afade=t=in:d=1,afade=t=out:st=${
+                getAudioFadeOut(
+                    creditsDuration
+                )
+            },asetpts=PTS-STARTPTS[${CREDITS_AUDIO_LABEL}]; 
             
         """.trimIndent()
         )
@@ -252,9 +253,11 @@ class CommandCook(
                 sb.append(
                     """
                     [0:v]trim=${tl.sourceStart}:${tl.sourceEnd},setpts=$timelapseSpeed*(PTS-STARTPTS)[$tvLabel]; 
-                    [1:a]atrim=${bgm.first}:${bgm.second},asetpts=PTS-STARTPTS,afade=t=in:d=1,afade=t=out:st=${getAudioFadeOut(
-                        tl.targetDuration
-                    )},asetpts=PTS-STARTPTS[$taLabel]; 
+                    [1:a]atrim=${bgm.first}:${bgm.second},asetpts=PTS-STARTPTS,afade=t=in:d=1,afade=t=out:st=${
+                        getAudioFadeOut(
+                            tl.targetDuration
+                        )
+                    },asetpts=PTS-STARTPTS[$taLabel]; 
                     
                 """.trimIndent()
                 )
@@ -277,9 +280,11 @@ class CommandCook(
                 sb.append(
                     """
                     [0:v]trim=${tl.sourceStart}:${tl.sourceEnd},setpts=$timelapseSpeed*(PTS-STARTPTS)[$tvLabel]; 
-                    [1:a]atrim=${bgm.first}:${bgm.second},asetpts=PTS-STARTPTS,afade=t=in:d=1,afade=t=out:st=${getAudioFadeOut(
-                        tl.targetDuration
-                    )},asetpts=PTS-STARTPTS[$taLabel]; 
+                    [1:a]atrim=${bgm.first}:${bgm.second},asetpts=PTS-STARTPTS,afade=t=in:d=1,afade=t=out:st=${
+                        getAudioFadeOut(
+                            tl.targetDuration
+                        )
+                    },asetpts=PTS-STARTPTS[$taLabel]; 
                     
                 """.trimIndent()
                 )
@@ -403,7 +408,7 @@ class CommandCook(
 
         val program = getProgram()
 
-        val sar = "1/1" // videoDimens.sampleAspectRatio.replace(":", "/")
+        val sar = videoDimens.sampleAspectRatio?.replace(":", "/") ?: "1/1"
 
         var highlightVideoInput = ""
         if (highLightFile != null) {

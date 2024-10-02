@@ -13,7 +13,7 @@ data class VideoMeta(
     @SerializedName("height")
     val height: Int, // 544
     @SerializedName("sample_aspect_ratio")
-    val sampleAspectRatio: String, // 1299:1280
+    val sampleAspectRatio: String?, // 1299:1280
     @SerializedName("width")
     val width: Int // 1280
 )
