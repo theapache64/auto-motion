@@ -35,19 +35,19 @@ object ComplexCommandExecutor {
         val cmd = CommandBuilder(command)
             .build()
 
-        println("QuickTag: ComplexCommandExecutor:executeCommand: command is '$cmd'")
+        : ComplexCommandExecutor:executeCommand: command is '$cmd'")
 
         var lastPrintedLineLength = 0
         val eop = ExecutionOutputPrinter(object : Appender {
             override fun appendStdText(text: String) {
-                println("QuickTag: ComplexCommandExecutor:appendStdText: $text")
+                : ComplexCommandExecutor:appendStdText: $text")
                 lastPrintedLineLength = text.length
                 checkAndPrint(isLivePrint, isSameLinePrint, isNoPrint, text, prefix)
                 result.add(text)
             }
 
             override fun appendErrText(text: String) {
-                println("QuickTag: ComplexCommandExecutor:appendErrText: $text")
+                : ComplexCommandExecutor:appendErrText: $text")
                 lastPrintedLineLength = text.length
                 checkAndPrint(isLivePrint, isSameLinePrint, isNoPrint, text, prefix)
                 error.append(text).append("\n")
@@ -75,8 +75,8 @@ object ComplexCommandExecutor {
             result.add(0, error.toString())
         }
 
-        println("QuickTag: ComplexCommandExecutor:executeCommand: error : '$error'")
-        println("QuickTag: ComplexCommandExecutor:executeCommand: result : '$result'")
+        : ComplexCommandExecutor:executeCommand: error : '$error'")
+        : ComplexCommandExecutor:executeCommand: result : '$result'")
 
         if (isClearAfterFinish) {
             print("${SpacePrinter.getSpace(lastPrintedLineLength + 2)}\r")

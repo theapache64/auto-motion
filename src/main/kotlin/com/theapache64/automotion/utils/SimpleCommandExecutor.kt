@@ -46,7 +46,7 @@ object SimpleCommandExecutor {
                     "/bin/sh", "-c", *commands
                 )
             )
-            println("QuickTag: SimpleCommandExecutor:executeCommands: ✅")
+            : SimpleCommandExecutor:executeCommands: ✅")
 
             val stdInput = BufferedReader(InputStreamReader(proc.inputStream))
             val stdError = BufferedReader(InputStreamReader(proc.errorStream))
@@ -95,7 +95,7 @@ object SimpleCommandExecutor {
                 prefix = "-> ",
                 isClearAfterFinish = false
             ).also {
-                println("QuickTag: SimpleCommandExecutor:executeCommands: out is '$it'")
+                : SimpleCommandExecutor:executeCommands: out is '$it'")
             }
         }
 
