@@ -19,10 +19,8 @@ object FileUtils {
         if (file.exists()) {
             val command =
                 "ffprobe -i \"${file.absolutePath}\" -show_entries format=duration -v quiet -of csv=\"p=0\""
-            : FileUtils:getDuration: '$command'")
             val output =
                 SimpleCommandExecutor.executeCommand(command)
-            : FileUtils:getDuration: '$output'")
             return output.toDouble()
         } else {
             throw FileNotFoundException(file.absolutePath)
@@ -33,14 +31,11 @@ object FileUtils {
      * To get duration of multiple media files in seconds
      */
     fun getDuration(files: List<File>): Double {
-        : FileUtils:getDuration: came")
         var duration = 0.0
         files.forEach { file ->
             duration += getDuration(file)
         }
-        return duration.also {
-            : FileUtils:getDuration: dur: $it")
-        }
+        return duration
     }
 
     /**
@@ -50,8 +45,8 @@ object FileUtils {
      */
     fun getDimension(videoFile: File): VideoMeta {
         val command =
-            "/opt/homebrew/bin/ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration,sample_aspect_ratio -print_format json=c=1 \"${videoFile.absolutePath}\""
-        : FileUtils:getDimension: '$command'")
+            "ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration,sample_aspect_ratio -print_format json=c=1 \"${videoFile.absolutePath}\""
+
         val jsonString =
             SimpleCommandExecutor.executeCommand(command)
         val ffProbeOutput = GsonUtils.gson.fromJson(jsonString, FFProbeOutput::class.java)
@@ -63,7 +58,7 @@ object FileUtils {
         return if (hasSubTitle(inputFile)) {
             val subTitleFilePath = "${inputFile.parentFile.absolutePath}/${inputFile.nameWithoutExtension}.srt"
             val command =
-                "/opt/homebrew/bin/ffmpeg -y -i \"${inputFile.absolutePath}\" -map 0:s:0 \"$subTitleFilePath\""
+                "ffmpeg -y -i \"${inputFile.absolutePath}\" -map 0:s:0 \"$subTitleFilePath\""
             SimpleCommandExecutor.executeCommand(
                 command,
                 isLivePrint = false,
@@ -84,6 +79,6 @@ object FileUtils {
     }
 
     fun hasSubTitle(inputFile: File): Boolean {
-        return SimpleCommandExecutor.executeCommand("/opt/homebrew/bin/ffmpeg -i \"${inputFile.absolutePath}\" -c copy -map 0:s -f null - -v 0 -hide_banner && echo \$? || echo \$?\n") == "0"
+        return SimpleCommandExecutor.executeCommand("ffmpeg -i \"${inputFile.absolutePath}\" -c copy -map 0:s -f null - -v 0 -hide_banner && echo \$? || echo \$?\n") == "0"
     }
 }

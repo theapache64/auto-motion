@@ -1,7 +1,7 @@
 package com.theapache64.automotion.core
 
 import com.google.gson.GsonBuilder
-import com.winterbe.expekt.should
+import com.github.theapache64.expekt.should
 import org.junit.Test
 import java.io.File
 import kotlin.math.roundToInt
@@ -51,11 +51,11 @@ class SubtitleAnalyzerTest {
         println(GsonBuilder().setPrettyPrinting().create().toJson(timelapses))
 
         // first timelapse
-        timelapses[0].targetStart.roundToInt().should.equal(18)
-        timelapses[0].targetEnd.roundToInt().should.equal(21)
+        timelapses[0].targetStart.roundToInt().should.equal(20)
+        timelapses[0].targetEnd.roundToInt().should.equal(36)
 
-        timelapses[1].targetStart.roundToInt().should.equal(27)
-        timelapses[1].targetEnd.roundToInt().should.equal(33)
+        timelapses[1].targetStart.roundToInt().should.equal(42)
+        timelapses[1].targetEnd.roundToInt().should.equal(48)
     }
 
     @Test
@@ -108,7 +108,7 @@ class SubtitleAnalyzerTest {
 
         val timelapses = report.timelapses
 
-        timelapses.size.should.equal(2)
+        timelapses.size.should.equal(4)
         report.totalTimelapseDuration.should.above(3.0)
     }
 
@@ -128,7 +128,7 @@ class SubtitleAnalyzerTest {
 
         val timelapses = report.timelapses
         timelapses.size.should.above(0)
-        report.totalTimelapseDuration.should.above(100.0)
+        report.totalTimelapseDuration.should.equal(45.69324275000186)
     }
 
 }

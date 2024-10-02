@@ -68,11 +68,12 @@ object Main {
 
 
                     if (defaultSrt != null) {
-                        println("🤗 We've found a connected subtitle with the video, Do you want to proceed?")
-                        val isProceedWithDefault = InputUtils.getString(
-                            "y for YES and other for NO",
+                        println("🤗 Subtitle already available for the given video, Do you want to reuse it?")
+                        val resp = InputUtils.getString(
+                            "y for YES, other for NO",
                             true
-                        ).toLowerCase() == "y"
+                        ).toLowerCase()
+                        val isProceedWithDefault = resp == "y" || resp == "yes"
 
                         if (!isProceedWithDefault) {
                             defaultSrt = null

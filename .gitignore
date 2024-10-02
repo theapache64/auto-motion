@@ -136,14 +136,4 @@ gradle-app.setting
 
 # End of https://www.gitignore.io/api/java,gradle,intellij
 
-*.mp4
-*.mkv
-merged.mp3
 
-!lab/lion.mp4
-!libs/system_command_executor.jar
-lab/*.sh
-lab/*.json
-!lab/command.sh
-!lab/lion.json
-!lab/test_timelapse_target_start_end.json

@@ -1,6 +1,6 @@
 package com.theapache64.automotion.core
 
-import com.winterbe.expekt.should
+import com.github.theapache64.expekt.should
 import org.junit.Test
 import java.io.File
 import kotlin.math.ceil

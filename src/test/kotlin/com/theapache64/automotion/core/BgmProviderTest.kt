@@ -1,6 +1,6 @@
 package com.theapache64.automotion.core
 
-import com.winterbe.expekt.should
+import com.github.theapache64.expekt.should
 import org.junit.Test
 import java.io.File
 import java.lang.IllegalArgumentException
@@ -71,10 +71,7 @@ class BgmProviderTest {
     fun test2BgmProviderSuccess() {
 
         val mergedFile = File("lab/merged_2.mp3")
-
-        val bgmProvider = BgmProvider(
-            mergedFile
-        )
+        val bgmProvider = BgmProvider(mergedFile)
 
         println("File duration : ${FileUtils.getDuration(mergedFile)}")
 

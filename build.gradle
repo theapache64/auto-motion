@@ -6,11 +6,11 @@ plugins {
 group 'com.theapache64'
 version 'v1.0.0-beta01'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
-
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -20,14 +20,13 @@ dependencies {
     implementation files('libs/system_command_executor.jar')
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
-    testImplementation "com.winterbe:expekt:0.5.0"
-
+    testImplementation "com.github.theapache64:expekt:1.0.0"
 
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }

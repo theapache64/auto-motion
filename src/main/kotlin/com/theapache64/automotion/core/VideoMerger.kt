@@ -31,7 +31,7 @@ object VideoMerger {
         val mergeFile = File("$videoParent/merged_${System.currentTimeMillis()}.${videoList.first().extension}")
 
         val ffmpegCommand =
-            "/opt/homebrew/bin/ffmpeg -y -f concat -safe 0 -i ${mergeListFile.absolutePath} -c copy '${mergeFile.absolutePath}'"
+            "ffmpeg -y -f concat -safe 0 -i ${mergeListFile.absolutePath} -c copy '${mergeFile.absolutePath}'"
         val result = ComplexCommandExecutor.executeCommand(
             ffmpegCommand,
             true,

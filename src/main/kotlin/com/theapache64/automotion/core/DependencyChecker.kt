@@ -13,7 +13,7 @@ object DependencyChecker {
 
     fun isFFmpegOkay(): Boolean {
 
-        val versionDetails = SimpleCommandExecutor.executeCommand("/opt/homebrew/bin/ffmpeg -version")
+        val versionDetails = SimpleCommandExecutor.executeCommand("ffmpeg -version")
 
         if (versionDetails.startsWith(FFMPEG_VERSION_START)) {
             // checking version
@@ -23,10 +23,10 @@ object DependencyChecker {
             if (currentVersion >= MIN_FFMPEG_VERSION) {
                 return true
             } else {
-                throw DependencyException("/opt/homebrew/bin/ffmpeg version should be >= 4.2.2 but $curV")
+                throw DependencyException("ffmpeg version should be >= 4.2.2 but $curV")
             }*/
         } else {
-            throw DependencyException("/opt/homebrew/bin/ffmpeg not installed")
+            throw DependencyException("ffmpeg not installed")
         }
     }
 
@@ -49,7 +49,7 @@ object DependencyChecker {
     }
 
     fun isFFPBOkay(): Boolean {
-        val commandOutput = SimpleCommandExecutor.executeCommand("/opt/homebrew/bin/ffpb --help")
+        val commandOutput = SimpleCommandExecutor.executeCommand("ffpb --help")
         val isOkay = commandOutput
             .contains(FFPB_OUTPUT_START)
         if (isOkay) {

@@ -4,10 +4,7 @@ import mhashim6.commander.main.Appender
 import mhashim6.commander.main.CommandBuilder
 import mhashim6.commander.main.CommandExecutor
 import mhashim6.commander.main.ExecutionOutputPrinter
-import java.io.BufferedReader
-import java.io.File
 import java.io.IOException
-import java.io.InputStreamReader
 
 /**
  * To execute commands using the shell
@@ -35,19 +32,16 @@ object ComplexCommandExecutor {
         val cmd = CommandBuilder(command)
             .build()
 
-        : ComplexCommandExecutor:executeCommand: command is '$cmd'")
 
         var lastPrintedLineLength = 0
         val eop = ExecutionOutputPrinter(object : Appender {
             override fun appendStdText(text: String) {
-                : ComplexCommandExecutor:appendStdText: $text")
                 lastPrintedLineLength = text.length
                 checkAndPrint(isLivePrint, isSameLinePrint, isNoPrint, text, prefix)
                 result.add(text)
             }
 
             override fun appendErrText(text: String) {
-                : ComplexCommandExecutor:appendErrText: $text")
                 lastPrintedLineLength = text.length
                 checkAndPrint(isLivePrint, isSameLinePrint, isNoPrint, text, prefix)
                 error.append(text).append("\n")
@@ -75,8 +69,6 @@ object ComplexCommandExecutor {
             result.add(0, error.toString())
         }
 
-        : ComplexCommandExecutor:executeCommand: error : '$error'")
-        : ComplexCommandExecutor:executeCommand: result : '$result'")
 
         if (isClearAfterFinish) {
             print("${SpacePrinter.getSpace(lastPrintedLineLength + 2)}\r")

@@ -39,14 +39,13 @@ object SimpleCommandExecutor {
         isSuppressError: Boolean,
         isReturnAll: Boolean
     ): List<String> {
-        if(commands.toList().toString().contains("ffprobe")){
+        if(commands.toList().toString().contains("ffprobe") || commands.toList().toString().contains("ffpb")){
             val rt = Runtime.getRuntime()
             val proc = rt.exec(
                 arrayOf(
                     "/bin/sh", "-c", *commands
                 )
             )
-            : SimpleCommandExecutor:executeCommands: ✅")
 
             val stdInput = BufferedReader(InputStreamReader(proc.inputStream))
             val stdError = BufferedReader(InputStreamReader(proc.errorStream))
@@ -94,9 +93,7 @@ object SimpleCommandExecutor {
                 isReturnAll = isReturnAll,
                 prefix = "-> ",
                 isClearAfterFinish = false
-            ).also {
-                : SimpleCommandExecutor:executeCommands: out is '$it'")
-            }
+            )
         }
 
 

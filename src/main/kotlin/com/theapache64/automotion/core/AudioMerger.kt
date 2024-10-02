@@ -2,7 +2,6 @@ package com.theapache64.automotion.core
 
 import com.theapache64.automotion.utils.ComplexCommandExecutor
 import java.io.File
-import java.lang.StringBuilder
 
 class AudioMerger(private val bgmFiles: List<File>) {
 
@@ -19,6 +18,7 @@ class AudioMerger(private val bgmFiles: List<File>) {
         }
 
         val command = buildCommand(outputFile)
+        println("QuickTag: AudioMerger:merge: $command")
         ComplexCommandExecutor.executeCommand(
             command,
             isLivePrint = true,
@@ -29,11 +29,14 @@ class AudioMerger(private val bgmFiles: List<File>) {
             prefix = "\uD83C\uDF00 merging : "
         )
 
+        if (!outputFile.exists()) {
+            error("Failed to merge audio")
+        }
         return outputFile
     }
 
     private fun buildCommand(outputFile: File): String {
-        val sb = StringBuilder("/opt/homebrew/bin/ffmpeg ")
+        val sb = StringBuilder("ffpb ")
 
         // Adding input files
         bgmFiles.forEach { bgmFile ->
