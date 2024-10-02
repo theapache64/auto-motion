@@ -24,7 +24,7 @@ object AutoSubUtils {
     ): List<AutoSubNode> {
 
         val command =
-            "autosub --src-language $videoLanguage --dst-language $videoLanguage \"${videoFile.absolutePath}\""
+            "/opt/homebrew/bin/autosub --src-language $videoLanguage --dst-language $videoLanguage \"${videoFile.absolutePath}\""
 
         val autoSubOutput = ComplexCommandExecutor.executeCommand(
             command,

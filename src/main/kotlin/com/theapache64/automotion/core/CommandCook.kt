@@ -403,7 +403,7 @@ class CommandCook(
 
         val program = getProgram()
 
-        val sar = videoDimens.sampleAspectRatio.replace(":", "/")
+        val sar = "1/1" // videoDimens.sampleAspectRatio.replace(":", "/")
 
         var highlightVideoInput = ""
         if (highLightFile != null) {

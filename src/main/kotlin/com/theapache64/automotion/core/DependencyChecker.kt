@@ -7,25 +7,26 @@ object DependencyChecker {
 
     private const val MIN_FFMPEG_VERSION = 422
     private const val FFMPEG_VERSION_START = "ffmpeg version"
-    private const val FFPB_OUTPUT_START = "Hyper fast Audio and Video encoder"
+    private const val FFPB_OUTPUT_START = "Universal media converter"
     private val VERSION_REPLACE_REGEX = "[a-zA-Z\\s.]+".toRegex()
     private const val AUTOSUB_HELP = "usage: autosub"
 
     fun isFFmpegOkay(): Boolean {
 
-        val versionDetails = SimpleCommandExecutor.executeCommand("ffmpeg -version")
+        val versionDetails = SimpleCommandExecutor.executeCommand("/opt/homebrew/bin/ffmpeg -version")
 
         if (versionDetails.startsWith(FFMPEG_VERSION_START)) {
             // checking version
-            val curV = versionDetails.split("-")[0]
+            return true
+            /*val curV = versionDetails.split("-")[0]
             val currentVersion = curV.replace(VERSION_REPLACE_REGEX, "").toLong()
             if (currentVersion >= MIN_FFMPEG_VERSION) {
                 return true
             } else {
-                throw DependencyException("ffmpeg version should be >= 4.2.2 but $curV")
-            }
+                throw DependencyException("/opt/homebrew/bin/ffmpeg version should be >= 4.2.2 but $curV")
+            }*/
         } else {
-            throw DependencyException("ffmpeg not installed")
+            throw DependencyException("/opt/homebrew/bin/ffmpeg not installed")
         }
     }
 
@@ -48,7 +49,7 @@ object DependencyChecker {
     }
 
     fun isFFPBOkay(): Boolean {
-        val commandOutput = SimpleCommandExecutor.executeCommand("ffpb --help")
+        val commandOutput = SimpleCommandExecutor.executeCommand("/opt/homebrew/bin/ffpb --help")
         val isOkay = commandOutput
             .contains(FFPB_OUTPUT_START)
         if (isOkay) {

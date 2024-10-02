@@ -14,7 +14,6 @@ class AudioMerger(private val bgmFiles: List<File>) {
 
         val firstFile = bgmFiles.first()
         val outputFile = File("${firstFile.parent}/merged.${firstFile.extension}")
-
         if (outputFile.exists()) {
             outputFile.delete()
         }
@@ -34,7 +33,7 @@ class AudioMerger(private val bgmFiles: List<File>) {
     }
 
     private fun buildCommand(outputFile: File): String {
-        val sb = StringBuilder("ffpb ")
+        val sb = StringBuilder("/opt/homebrew/bin/ffmpeg ")
 
         // Adding input files
         bgmFiles.forEach { bgmFile ->
@@ -46,7 +45,7 @@ class AudioMerger(private val bgmFiles: List<File>) {
             sb.append("[$i:0]")
         }
 
-        sb.append("concat=n=${bgmFiles.size}:v=0:a=1[out]\" -map '[out]' $outputFile")
+        sb.append("concat=n=${bgmFiles.size}:v=0:a=1[out]\" -map '[out]' '${outputFile.absolutePath}'")
 
         return sb.toString()
     }

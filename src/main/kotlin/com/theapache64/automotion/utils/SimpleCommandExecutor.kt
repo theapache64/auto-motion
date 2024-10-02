@@ -1,6 +1,7 @@
 package com.theapache64.automotion.utils
 
 import java.io.BufferedReader
+import java.io.File.separator
 import java.io.IOException
 import java.io.InputStreamReader
 
@@ -38,49 +39,68 @@ object SimpleCommandExecutor {
         isSuppressError: Boolean,
         isReturnAll: Boolean
     ): List<String> {
-
-        val rt = Runtime.getRuntime()
-        val proc = rt.exec(
-            arrayOf(
-                "/bin/sh", "-c", *commands
+        if(commands.toList().toString().contains("ffprobe")){
+            val rt = Runtime.getRuntime()
+            val proc = rt.exec(
+                arrayOf(
+                    "/bin/sh", "-c", *commands
+                )
             )
-        )
+            println("QuickTag: SimpleCommandExecutor:executeCommands: ✅")
 
-        val stdInput = BufferedReader(InputStreamReader(proc.inputStream))
-        val stdError = BufferedReader(InputStreamReader(proc.errorStream))
+            val stdInput = BufferedReader(InputStreamReader(proc.inputStream))
+            val stdError = BufferedReader(InputStreamReader(proc.errorStream))
 
-        // Read the output from the command
-        // Read the output from the command
-        var s: String?
-        val result = mutableListOf<String>()
-        while (stdInput.readLine().also { s = it } != null) {
-            if (isLivePrint) {
-                println(s)
+            // Read the output from the command
+            // Read the output from the command
+            var s: String?
+            val result = mutableListOf<String>()
+            while (stdInput.readLine().also { s = it } != null) {
+                if (isLivePrint) {
+                    println(s)
+                }
+                result.add(s!!)
             }
-            result.add(s!!)
-        }
 
-        // Read any errors from the attempted command
-        // Read any errors from the attempted command
-        val error = StringBuilder()
-        while (stdError.readLine().also { s = it } != null) {
-            if (isLivePrint) {
-                println(s)
+            // Read any errors from the attempted command
+            // Read any errors from the attempted command
+            val error = StringBuilder()
+            while (stdError.readLine().also { s = it } != null) {
+                if (isLivePrint) {
+                    println(s)
+                }
+                error.append(s).append("\n")
             }
-            error.append(s).append("\n")
-        }
 
-        if (!isSuppressError) {
-            if (result.isEmpty() && error.isNotBlank()) {
-                // has error
-                throw IOException(error.toString())
+            if (!isSuppressError) {
+                if (result.isEmpty() && error.isNotBlank()) {
+                    // has error
+                    throw IOException(error.toString())
+                }
+            }
+
+            if (isReturnAll) {
+                result.add(0, error.toString())
+            }
+
+            return result
+        }else{
+            return ComplexCommandExecutor.executeCommand(
+                command =commands.joinToString(separator = " "),
+                isLivePrint = isLivePrint,
+                isSameLinePrint = { false },
+                isNoPrint = { false },
+                isSuppressError = isSuppressError,
+                isReturnAll = isReturnAll,
+                prefix = "-> ",
+                isClearAfterFinish = false
+            ).also {
+                println("QuickTag: SimpleCommandExecutor:executeCommands: out is '$it'")
             }
         }
 
-        if (isReturnAll) {
-            result.add(0, error.toString())
-        }
 
-        return result
+
+
     }
 }
